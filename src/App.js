@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { AuthContext } from "./contexts/AuthContext";
+import * as authServices from './services/AuthServices';
 
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/HomePage/Home";
@@ -17,7 +18,13 @@ function App() {
 
   const onLoginSubmit = async (data) => {
     
-    console.log(data);
+    const result = await authServices.Login(data);
+    setAuth(result);
+    console.log(result);
+    
+    
+    
+    
   };
 
   return (

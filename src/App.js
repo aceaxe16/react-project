@@ -19,8 +19,12 @@ function App() {
   const onLoginSubmit = async (data) => {
     
     const result = await authServices.Login(data);
-    setAuth(result);
-    console.log(result);
+    if(result.code){
+      console.log("Problem");
+    }else{
+      setAuth(result);
+      console.log(result);
+    }
     
     
     

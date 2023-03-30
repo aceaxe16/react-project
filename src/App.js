@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "./contexts/AuthContext";
 import * as authServices from './services/AuthServices';
@@ -15,29 +15,43 @@ import { useState } from "react";
 
 function App() {
   const [auth, setAuth] = useState({});
+  const navigate = useNavigate();
 
   const onLoginSubmit = async (data) => {
     
     const result = await authServices.Login(data);
     if(result.code){
+      //TODO error handle
       console.log("Problem");
     }else{
       setAuth(result);
-      
-    }
-    
-    
-    
-    
+      navigate('/home');
+    }   
   };
+
+  const onRegisterSubmit = async(data) => {
+    const {confirmPassword, ...registerData} = data;
+    if(confirmPassword !== registerData.password){
+      //TODO password and confirm password must match error handle
+      return
+    }
+    const result = await authServices.Register(registerData);
+    if(result.code){
+      //TODO error handle
+      console.log("Problem");
+    }else{
+      setAuth(result);
+      navigate('/home');
+    }   
+  }
 
   const context = {
     onLoginSubmit,
+    onRegisterSubmit,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken
-    
+    isAuthenticated: !!auth.accessToken    
   };
 
   return (

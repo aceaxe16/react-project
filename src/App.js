@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "./contexts/AuthContext";
 import * as authServices from './services/AuthServices';
@@ -9,6 +9,7 @@ import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { Catalog } from "./components/Catalog/Catalog";
 import { Profile } from "./components/Profile/Profile";
+import { Logout } from "./components/Logout/Logout";
 import { AddManga } from "./components/AddManga/AddManga";
 import { useState } from "react";
 
@@ -45,9 +46,17 @@ function App() {
     }   
   }
 
+  const onLogout = async() => {
+    //TODO authorized logout
+    //await authServices.Logout();
+
+    setAuth({});
+  }
+
   const context = {
     onLoginSubmit,
     onRegisterSubmit,
+    onLogout,
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
@@ -62,6 +71,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/add-manga" element={<AddManga />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/profile" element={<Profile />} />

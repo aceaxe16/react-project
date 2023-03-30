@@ -1,7 +1,5 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { useContext } from "react";
+import { Link } from 'react-router-dom';
 
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -9,32 +7,25 @@ export const Header = () => {
   const { isAuthenticated, userEmail } = useContext(AuthContext);
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/home">Manga World</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {/* Always showed*/}
-            <Nav.Link href="/catalog">Catalog</Nav.Link>
-            {/* Show if guest */}
-            {isAuthenticated && (
-              <>
-                <Nav.Link href="/add-manga">Add Manga</Nav.Link>
-                <Nav.Link href="/profile">{userEmail}</Nav.Link>
-                <Nav.Link href="/logout">Logout</Nav.Link>
-              </>
-            )}
-            {!isAuthenticated && (
-              <>
-                <Nav.Link href="/login">Login</Nav.Link>
-                <Nav.Link href="/register">Register</Nav.Link>
-              </>
-            )}
-            
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <header>
+            <h1><Link className="home" to="/home">MangaWorld</Link></h1>
+            <nav>
+                <Link to="/catalog">Catalog</Link>
+                {isAuthenticated && (
+                    <div id="user">
+                        <span>{userEmail}</span>
+                        <Link to="/add-manga">Add Manga</Link>
+                        <Link to="/logout">Logout</Link>
+                    </div>
+                )}
+
+                {!isAuthenticated && (
+                    <div id="guest">
+                        <Link to="/login">Login</Link>
+                        <Link to="/register">Register</Link>
+                    </div>
+                )}
+            </nav>
+        </header>
   );
 };

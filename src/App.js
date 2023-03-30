@@ -23,7 +23,7 @@ function App() {
       console.log("Problem");
     }else{
       setAuth(result);
-      console.log(result);
+      
     }
     
     
@@ -31,8 +31,17 @@ function App() {
     
   };
 
+  const context = {
+    onLoginSubmit,
+    userId: auth._id,
+    token: auth.accessToken,
+    userEmail: auth.email,
+    isAuthenticated: !!auth.accessToken
+    
+  };
+
   return (
-    <AuthContext.Provider value = {{onLoginSubmit}}>
+    <AuthContext.Provider value = {context}>
       <div>
         <Header />
         <Routes>
@@ -40,7 +49,7 @@ function App() {
           <Route path="/add-manga" element={<AddManga />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/services" element={<Catalog />} />
+          <Route path="/catalog" element={<Catalog />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

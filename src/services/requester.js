@@ -1,16 +1,23 @@
-const requester = async (method, url, data) => {
+const requester = async (method, token, url, data) => {
     const options = {};
 
-    if(method !== "GET"){
+    if (method !== 'GET') {
         options.method = method;
 
-        if(data){
+        if (data) {
             options.headers = {
-                'content-type':'application-layer',
+                'content-type': 'application/json',
             };
 
             options.body = JSON.stringify(data);
         }
+    }
+
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'X-Authorization': token,
+        };
     }
 
     const response = await fetch(url, options);
@@ -30,8 +37,22 @@ const requester = async (method, url, data) => {
 
 };
 
-export const get = requester.bind(null,"GET");
-export const post = requester.bind(null,"POST");
-export const put = requester.bind(null,"PUT");
-export const patch = requester.bind(null,"PATCH");
-export const del = requester.bind(null,"DELETE");
+export const requestFactory = (token) => {
+    if (!token) {
+        const serializedAuth = localStorage.getItem('auth');
+
+        if (serializedAuth) {
+            const auth = JSON.parse(serializedAuth);
+            token = auth.accessToken;
+        }
+    }
+
+    return {
+        get: requester.bind(null, 'GET', token),
+        post: requester.bind(null, 'POST', token),
+        put: requester.bind(null, 'PUT', token),
+        patch: requester.bind(null, 'PATCH', token),
+        delete: requester.bind(null, 'DELETE', token),
+    }
+} 
+

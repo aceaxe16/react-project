@@ -5,17 +5,17 @@ export const AddManga = () => {
             <div className="container">
                 <h1>Create Game</h1>
 
-                <label htmlFor="leg-title">Legendary title:</label>
+                <label htmlFor="leg-title">Title:</label>
                 <input 
                 //value={values.title} 
                 //onChange={changeHandler} 
-                type="text" id="title" name="title" placeholder="Enter game title..." />
+                type="text" id="title" name="title" placeholder="Enter manga title..." />
 
-                <label htmlFor="category">Category:</label>
+                <label htmlFor="genre">Genre:</label>
                 <input 
-                //value={values.category} 
+                //value={values.genre} 
                 //onChange={changeHandler} 
-                type="text" id="category" name="category" placeholder="Enter game category..." />
+                type="text" id="genre" name="genre" placeholder="Enter manga genre..." />
 
                 
                 <label htmlFor="game-img">Image:</label>

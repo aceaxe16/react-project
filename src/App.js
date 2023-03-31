@@ -1,7 +1,7 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 
-import { AuthContext } from "./contexts/AuthContext";
-import * as authServices from './services/AuthServices';
+
+import {AuthProvider} from './contexts/AuthContext';
 
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/HomePage/Home";
@@ -15,56 +15,21 @@ import { useState } from "react";
 
 
 function App() {
-  const [auth, setAuth] = useState({});
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // const [mangas, setMangas] = useState([]);
+  
 
-  const onLoginSubmit = async (data) => {
-    
-    const result = await authServices.Login(data);
-    if(result.code){
-      //TODO error handle
-      console.log("Problem");
-    }else{
-      setAuth(result);
-      navigate('/home');
-    }   
-  };
+  // const onAddMangaSubmit = async(data) => {
+  //   const newManga = await mangaSrvice.create(data);
 
-  const onRegisterSubmit = async(data) => {
-    const {confirmPassword, ...registerData} = data;
-    if(confirmPassword !== registerData.password){
-      //TODO password and confirm password must match error handle
-      return
-    }
-    const result = await authServices.Register(registerData);
-    if(result.code){
-      //TODO error handle
-      console.log("Problem");
-    }else{
-      setAuth(result);
-      navigate('/home');
-    }   
-  }
+  //   setMangas(state => [...state, newManga]);
+  //   navigate('/catalog');
+  // }
 
-  const onLogout = async() => {
-    //TODO authorized logout
-    //await authServices.Logout();
-
-    setAuth({});
-  }
-
-  const context = {
-    onLoginSubmit,
-    onRegisterSubmit,
-    onLogout,
-    userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken    
-  };
+ 
 
   return (
-    <AuthContext.Provider value = {context}>
+    <AuthProvider>
       <div>
         <Header />
         <Routes>
@@ -77,7 +42,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

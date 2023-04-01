@@ -12,8 +12,8 @@ export const Header = () => {
             <nav>
                 <Link to="/catalog">Catalog</Link>
                 {isAuthenticated && (
-                    <div id="user">
-                        <span>{userEmail}</span>
+                    <div id="user">                        
+                        <Link to = "/profile">{userEmail}</Link>
                         <Link to="/add-manga">Add Manga</Link>
                         <Link to="/logout">Logout</Link>
                     </div>

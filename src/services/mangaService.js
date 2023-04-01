@@ -11,7 +11,15 @@ export const mangaServiceFactory = (token) => {
         return result
     }
 
+    const getAll = async () => {
+        const result = await request.get(baseUrl);
+        const mangas = Object.values(result);
+
+        return mangas;
+    }
+
     return {
         create,
+        getAll,
     }
 }

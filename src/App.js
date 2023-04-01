@@ -12,7 +12,7 @@ import { Catalog } from "./components/Catalog/Catalog";
 import { Profile } from "./components/Profile/Profile";
 import { Logout } from "./components/Logout/Logout";
 import { AddManga } from "./components/AddManga/AddManga";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function App() {
@@ -20,6 +20,11 @@ function App() {
   const [mangas, setMangas] = useState([]);
   const mangaService = mangaServiceFactory();
   
+  useEffect(() => {
+    mangaService.getAll()
+    .then(state => setMangas(state));
+  })
+
 
   const onAddMangaSubmit = async(data) => {
     const newManga = await mangaService.create(data);
@@ -40,7 +45,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout/>} />
           <Route path="/register" element={<Register />} />
-          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog" element={<Catalog mangas = {mangas}/>} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

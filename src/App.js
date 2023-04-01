@@ -2,6 +2,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 
 
 import {AuthProvider} from './contexts/AuthContext';
+import {mangaServiceFactory} from './services/mangaService';
 
 import { Header } from "./components/Header/Header";
 import { Home } from "./components/HomePage/Home";
@@ -15,16 +16,17 @@ import { useState } from "react";
 
 
 function App() {
-  // const navigate = useNavigate();
-  // const [mangas, setMangas] = useState([]);
+  const navigate = useNavigate();
+  const [mangas, setMangas] = useState([]);
+  const mangaService = mangaServiceFactory();
   
 
-  // const onAddMangaSubmit = async(data) => {
-  //   const newManga = await mangaSrvice.create(data);
+  const onAddMangaSubmit = async(data) => {
+    const newManga = await mangaService.create(data);
 
-  //   setMangas(state => [...state, newManga]);
-  //   navigate('/catalog');
-  // }
+    setMangas(state => [...state, newManga]);
+    navigate('/catalog');
+  }
 
  
 
@@ -34,7 +36,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route path="/add-manga" element={<AddManga />} />
+          <Route path="/add-manga" element={<AddManga onAddMangaSubmit = {onAddMangaSubmit}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout/>} />
           <Route path="/register" element={<Register />} />

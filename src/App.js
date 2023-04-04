@@ -13,6 +13,7 @@ import { Profile } from "./components/Profile/Profile";
 import { Logout } from "./components/Logout/Logout";
 import { AddManga } from "./components/AddManga/AddManga";
 import { MangaDetails } from "./components/MangaDetails/MangaDetails";
+import { EditManga } from "./components/EditManga/EditManga";
 import { useEffect, useState } from "react";
 
 
@@ -24,7 +25,7 @@ function App() {
   useEffect(() => {
     mangaService.getAll()
     .then(state => setMangas(state));
-  })
+  });
 
 
   const onAddMangaSubmit = async(data) => {
@@ -32,6 +33,13 @@ function App() {
 
     setMangas(state => [...state, newManga]);
     navigate('/catalog');
+  };
+
+  const onMangaEditSubmit = async(values) => {
+    const result = await mangaService.edit(values._id, values);
+    setMangas(state => state.map(x => x._id === values._id ? result : x));
+
+    navigate(`/catalog/${values._id}`);
   }
 
  
@@ -48,6 +56,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/catalog" element={<Catalog mangas = {mangas}/>} />
           <Route path="/catalog/:mangaId" element={<MangaDetails/>} />
+      <Route path="/catalog/:mangaId/edit" element={<EditManga onMangaEditSubmit ={onMangaEditSubmit}/>} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

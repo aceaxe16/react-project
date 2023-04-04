@@ -23,9 +23,15 @@ export const mangaServiceFactory = (token) => {
         return result;
     }
 
+    const edit = async(mangaId, data) => {
+        const result = await request.put(`${baseUrl}/${mangaId}`, data);
+        return result;
+    }
+
     return {
         create,
         getAll,
         getOne,
+        edit,
     }
 }

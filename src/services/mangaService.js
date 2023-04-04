@@ -33,11 +33,19 @@ export const mangaServiceFactory = (token) => {
         return result;
     }
 
+    const getUserMangas = async(userId) => {
+        const result = await request.get(baseUrl);
+        const mangas = Object.values(result);
+        const userMangas = mangas.filter(x => x._ownerId === userId );
+        return userMangas; 
+    }
+
     return {
         create,
         getAll,
         getOne,
         edit,
         deleteManga,
+        getUserMangas,
     }
 }

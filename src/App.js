@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     mangaService.getAll()
     .then(state => setMangas(state));
-  });
+  }, [mangaService]);
 
 
   const onAddMangaSubmit = async(data) => {
@@ -57,7 +57,7 @@ function App() {
           <Route path="/catalog" element={<Catalog mangas = {mangas}/>} />
           <Route path="/catalog/:mangaId" element={<MangaDetails/>} />
           <Route path="/catalog/:mangaId/edit" element={<EditManga onMangaEditSubmit ={onMangaEditSubmit}/>} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile mangas = {mangas}/>} />
         </Routes>
       </div>
     </AuthProvider>

@@ -7,7 +7,7 @@ import { DeleteBtn } from "./DeleteBtn";
 
 export const MangaDetails = () => {
     const {mangaId} = useParams();
-    const {userId, isAuthenticated} = useAuthContext();
+    const {userId} = useAuthContext(); //isAuthenticated
     const [manga, setManga] = useState({});
     const mangaService = useService(mangaServiceFactory);
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
@@ -24,7 +24,7 @@ export const EditManga = ({
         .then(result => {
             validateValues(result);            
     });
-    }, [mangaId]);
+    }, [mangaId, mangaService, validateValues]);
 
 
     return (

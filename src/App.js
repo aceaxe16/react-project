@@ -12,6 +12,7 @@ import { Catalog } from "./components/Catalog/Catalog";
 import { Profile } from "./components/Profile/Profile";
 import { Logout } from "./components/Logout/Logout";
 import { AddManga } from "./components/AddManga/AddManga";
+import { MangaDetails } from "./components/MangaDetails/MangaDetails";
 import { useEffect, useState } from "react";
 
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/logout" element={<Logout/>} />
           <Route path="/register" element={<Register />} />
           <Route path="/catalog" element={<Catalog mangas = {mangas}/>} />
+          <Route path="/catalog/:mangaId" element={<MangaDetails/>} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

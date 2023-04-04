@@ -18,8 +18,14 @@ export const mangaServiceFactory = (token) => {
         return mangas;
     }
 
+    const getOne = async (gameId) => {
+        const result = await request.get(`${baseUrl}/${gameId}`);
+        return result;
+    }
+
     return {
         create,
         getAll,
+        getOne,
     }
 }

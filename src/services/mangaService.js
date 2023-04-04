@@ -28,10 +28,16 @@ export const mangaServiceFactory = (token) => {
         return result;
     }
 
+    const deleteManga = async(mangaId) => {
+        const result = request.delete(`${baseUrl}/${mangaId}`);
+        return result;
+    }
+
     return {
         create,
         getAll,
         getOne,
         edit,
+        deleteManga,
     }
 }

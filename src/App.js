@@ -56,7 +56,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/catalog" element={<Catalog mangas = {mangas}/>} />
           <Route path="/catalog/:mangaId" element={<MangaDetails/>} />
-      <Route path="/catalog/:mangaId/edit" element={<EditManga onMangaEditSubmit ={onMangaEditSubmit}/>} />
+          <Route path="/catalog/:mangaId/edit" element={<EditManga onMangaEditSubmit ={onMangaEditSubmit}/>} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

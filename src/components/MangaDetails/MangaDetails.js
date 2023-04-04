@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { mangaServiceFactory } from "../../services/mangaService";
+import { DeleteBtn } from "./DeleteBtn";
 
 export const MangaDetails = () => {
     const {mangaId} = useParams();
@@ -36,9 +37,7 @@ export const MangaDetails = () => {
             <Link to={`/catalog/${manga._id}/edit`} className="button">
               Edit
             </Link>
-            <button className="button" >
-              Delete
-            </button>
+            <DeleteBtn mangaId = {mangaId}/>
           </div>
         )}
       </div>

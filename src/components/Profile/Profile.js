@@ -28,7 +28,7 @@ export const Profile = () => {
               <img src={manga.imageUrl} alt="hi m8" />
             </Link>
           ))}
-          {addedMangas.length == 0 && (
+          {addedMangas.length === 0 && (
             <article className="not-available-photo">
               <h1>You haven't added any mangas yet</h1>
             </article>

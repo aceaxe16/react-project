@@ -9,11 +9,7 @@ export const AddManga = () => {
       title: "",
       genre: "",
       imageUrl: "",
-      summary: "",
-      likes: {
-        count: 0,
-        users: [],
-      },
+      summary: "",      
     },
     onAddMangaSubmit
   );

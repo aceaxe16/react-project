@@ -9,7 +9,9 @@ export const AddManga = () => {
       title: "",
       genre: "",
       imageUrl: "",
-      summary: "",      
+      summary: "",
+      author: "",
+      status: "",      
     },
     onAddMangaSubmit
   );
@@ -50,6 +52,26 @@ export const AddManga = () => {
             placeholder="Upload a photo..."
           />
 
+          <label htmlFor="author">Author:</label>
+          <input
+            value={values.author}
+            onChange={changeHandler}
+            type="text"
+            id="author"
+            name="author"
+            placeholder="Enter manga author..."
+          />
+
+          <label htmlFor="status">Status:</label>
+          <input
+            value={values.status}
+            onChange={changeHandler}
+            type="text"
+            id="status"
+            name="status"
+            placeholder="Enter status..."
+          />
+
           <label htmlFor="summary">Summary:</label>
           <textarea
             name="summary"
@@ -57,6 +79,7 @@ export const AddManga = () => {
             value={values.summary}
             onChange={changeHandler}
           ></textarea>
+
           <input className="btn submit" type="submit" value="Add Manga" />
         </div>
       </form>

@@ -33,6 +33,8 @@ export const MangaDetails = () => {
           <img className="manga-img" src={manga.imageUrl} alt="" />
           <h1>{manga.title}</h1>
           <p className="type">{manga.genre}</p>
+          <p className="type">{manga.author}</p>
+          <p className="type">{manga.status}</p>
         </div>
 
         <p className="text">{manga.summary}</p>

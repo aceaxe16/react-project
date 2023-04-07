@@ -6,7 +6,7 @@ import { mangaServiceFactory } from "../../services/mangaService";
 import { useMangaContext } from "../../contexts/MangaContext";
 
 export const EditManga = () => {
-  const { onMangaEditSubmit } =useMangaContext();
+  const { onMangaEditSubmit } = useMangaContext();
 
   const { mangaId } = useParams();
   const mangaService = useService(mangaServiceFactory);
@@ -17,6 +17,8 @@ export const EditManga = () => {
       genre: "",
       iamgeUrl: "",
       summary: "",
+      author: "",
+      status: "",
     },
     onMangaEditSubmit
   );
@@ -32,7 +34,7 @@ export const EditManga = () => {
       <form id="edit" method="post" onSubmit={onSubmit}>
         <div className="container">
           <h1>Edit Game</h1>
-          <label htmlFor="leg-title">Legendary title:</label>
+          <label htmlFor="leg-title">Manga title:</label>
           <input
             type="text"
             id="title"
@@ -50,12 +52,30 @@ export const EditManga = () => {
             onChange={changeHandler}
           />
 
-          <label htmlFor="game-img">Image:</label>
+          <label htmlFor="manga-img">Image:</label>
           <input
             type="text"
             id="imageUrl"
             name="imageUrl"
             value={values.imageUrl}
+            onChange={changeHandler}
+          />
+
+          <label htmlFor="author">Image:</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value={values.author}
+            onChange={changeHandler}
+          />
+
+          <label htmlFor="status">Status:</label>
+          <input
+            type="text"
+            id="status"
+            name="status"
+            value={values.status}
             onChange={changeHandler}
           />
 

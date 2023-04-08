@@ -11,7 +11,7 @@ export const AddManga = () => {
       imageUrl: "",
       summary: "",
       author: "",
-      status: "",      
+      status: "ongoing",      
     },
     onAddMangaSubmit
   );
@@ -20,7 +20,7 @@ export const AddManga = () => {
     <section id="create-page" className="auth">
       <form id="create" method="post" onSubmit={onSubmit}>
         <div className="container">
-          <h1>Create Game</h1>
+          <h1>Add Manga</h1>
 
           <label htmlFor="leg-title">Title:</label>
           <input
@@ -63,14 +63,10 @@ export const AddManga = () => {
           />
 
           <label htmlFor="status">Status:</label>
-          <input
-            value={values.status}
-            onChange={changeHandler}
-            type="text"
-            id="status"
-            name="status"
-            placeholder="Enter status..."
-          />
+          <select name= "status" id="status" value = {values.status} onChange={changeHandler}>
+            <option value = "ongoing">Ongoing</option>
+            <option value = "completed">Completed</option>
+          </select>         
 
           <label htmlFor="summary">Summary:</label>
           <textarea

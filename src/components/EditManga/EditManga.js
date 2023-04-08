@@ -71,13 +71,15 @@ export const EditManga = () => {
           />
 
           <label htmlFor="status">Status:</label>
-          <input
-            type="text"
-            id="status"
+          <select
             name="status"
+            id="status"
             value={values.status}
             onChange={changeHandler}
-          />
+          >
+            <option value="ongoing">Ongoing</option>
+            <option value="completed">Completed</option>
+          </select>
 
           <label htmlFor="summary">Summary:</label>
           <textarea

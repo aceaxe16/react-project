@@ -38,10 +38,10 @@ export const MangaDetails = () => {
         </div>
 
         <p className="text">{manga.summary}</p>
-        <div>
+        {/* <div>
           {isAuthenticated && <Button variant="primary" onClick={onClick}>Like</Button>}
           <span>88</span>
-        </div>
+        </div> */}
         
 
         {isOwner && (

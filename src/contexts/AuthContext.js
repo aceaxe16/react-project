@@ -1,39 +1,43 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 import { authServiceFactory } from '../services/authService';
+
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [auth, setAuth] = useLocalStorage("auth", {});
+  const [error, setError] = useState({});
+  
 
   const authService = authServiceFactory(auth.accessToken)
 
   const onLoginSubmit = async (data) => {
     const result = await authService.login(data);
     if (result.code) {
-      //TODO error handle
-      console.log("Problem");
+      alert(result.message);      
     } else {
       setAuth(result);
       navigate("/home");
     }
+    
   };
   const onRegisterSubmit = async (data) => {
     const { confirmPassword, ...registerData } = data;
     if (confirmPassword !== registerData.password) {
-      //TODO password and confirm password must match error handle
+      alert("Password and Confirm Password have to match");
       return;
     }
     const result = await authService.register(registerData);
     if (result.code) {
       //TODO error handle
+      alert(result.message);
       console.log("Problem");
-    } else {
-      setAuth(result);
+    }else {
+      setAuth(result);      
       navigate("/home");
     }
   };
@@ -42,6 +46,8 @@ export const AuthProvider = ({ children }) => {
     setAuth({});
   }
 
+  
+
   const context = {
     onLoginSubmit,
     onRegisterSubmit,
@@ -49,7 +55,8 @@ export const AuthProvider = ({ children }) => {
     userId: auth._id,
     token: auth.accessToken,
     userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken    
+    isAuthenticated: !!auth.accessToken,
+    error,    
   };
 
   return(

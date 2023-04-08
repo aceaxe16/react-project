@@ -20,6 +20,11 @@ export const MangaProvide = ({
     }, []);
 
     const onAddMangaSubmit = async(data) => {
+        console.log(data);
+        if(data.title === "" || data.genre === "" || data.imageUrl === "" || data.summary === "" || data.author === "" || data.status === ""){
+            alert("All fields are required");
+            return
+        }
         const newManga = await mangaService.create(data);
     
         setMangas(state => [...state, newManga]);

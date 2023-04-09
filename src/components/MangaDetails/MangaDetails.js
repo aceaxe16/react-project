@@ -8,6 +8,8 @@ import { mangaServiceFactory } from "../../services/mangaService";
 import Button from "react-bootstrap/Button";
 import { DeleteBtn } from "./DeleteBtn";
 
+import './Details.css';
+
 export const MangaDetails = () => {
   const { mangaId } = useParams();
   const { userId, isAuthenticated } = useAuthContext(); //isAuthenticated
@@ -27,7 +29,7 @@ export const MangaDetails = () => {
 
   return (
     <section id="game-details">
-      <h1>Manga Details</h1>
+      <h1 className="page-name">Manga Details</h1>
       <div className="info-section">
         <div className="manga-header">
           <img className="manga-img" src={manga.imageUrl} alt="" />

@@ -32,12 +32,16 @@ export const MangaProvide = ({
         navigate('/catalog');
     };
 
-    const onMangaEditSubmit = async(values) => {
-        const result = await mangaService.edit(values._id, values);
+    const onMangaEditSubmit = async(data) => {
+        if(data.title === "" || data.genre === "" || data.imageUrl === "" || data.summary === "" || data.author === "" || data.status === ""){
+            alert("All fields are required");
+            return
+        }
+        const result = await mangaService.edit(data._id, data);
 
-        setMangas(state => state.map(x => x._id === values._id ? result : x));
+        setMangas(state => state.map(x => x._id === data._id ? result : x));
 
-        navigate(`/catalog/${values._id}`);
+        navigate(`/catalog/${data._id}`);
     };
 
     const onMangaDelete = async(mangaId) => {

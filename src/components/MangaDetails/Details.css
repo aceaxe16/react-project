@@ -1,0 +1,22 @@
+.page-name{
+    color:  #A7AE19;   
+}
+
+.button {
+    margin-left: 10px;
+    padding:10px;    
+    border: 3px;
+    background-color:  #3079DF;
+    color: white;    
+}
+
+.button:hover {
+    color: #A7AE19;
+}
+
+section{
+    margin: auto;
+    width: 100%;    
+    padding: 10px;
+    
+}

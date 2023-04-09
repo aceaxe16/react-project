@@ -4,6 +4,8 @@ import { useService } from "../../hooks/useService";
 import { mangaServiceFactory } from "../../services/mangaService";
 import { useMangaContext } from "../../contexts/MangaContext";
 
+import './Details.css';
+
 export const DeleteBtn = ({
    mangaId,
    }) => {

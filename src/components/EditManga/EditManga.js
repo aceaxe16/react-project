@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
+
 import { mangaServiceFactory } from "../../services/mangaService";
 import { useMangaContext } from "../../contexts/MangaContext";
+
+import './EditManga.css';
 
 export const EditManga = () => {
   const { onMangaEditSubmit } = useMangaContext();
@@ -33,7 +37,7 @@ export const EditManga = () => {
     <section id="edit-page" className="auth">
       <form id="edit" method="post" onSubmit={onSubmit}>
         <div className="container">
-          <h1>Edit Game</h1>
+          <h1 className="page-name">Edit Game</h1>
           <label htmlFor="leg-title">Manga title:</label>
           <input
             type="text"
@@ -88,7 +92,7 @@ export const EditManga = () => {
             value={values.summary}
             onChange={changeHandler}
           ></textarea>
-          <input className="btn submit" type="submit" value="Edit Game" />
+          <input className="btn-submit" type="submit" value="Edit Game" />
         </div>
       </form>
     </section>

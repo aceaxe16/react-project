@@ -1,6 +1,8 @@
 import { useMangaContext } from "../../contexts/MangaContext";
 import { useForm } from "../../hooks/useForm";
 
+import "./AddManga.css";
+
 export const AddManga = () => {
 
   const {onAddMangaSubmit} = useMangaContext();
@@ -20,7 +22,7 @@ export const AddManga = () => {
     <section id="create-page" className="auth">
       <form id="create" method="post" onSubmit={onSubmit}>
         <div className="container">
-          <h1>Add Manga</h1>
+          <h1 className="page-name">Add Manga</h1>
 
           <label htmlFor="leg-title">Title:</label>
           <input
@@ -76,7 +78,7 @@ export const AddManga = () => {
             onChange={changeHandler}
           ></textarea>
 
-          <input className="btn submit" type="submit" value="Add Manga" />
+          <input className="btn-submit" type="submit" value="Add Manga" />
         </div>
       </form>
     </section>

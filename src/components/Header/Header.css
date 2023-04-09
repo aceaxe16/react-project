@@ -1,0 +1,30 @@
+header {
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    overflow: hidden;    
+}
+
+.home {
+    font-size: auto;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:  #A7AE19;
+}
+
+.nav-link {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
+    background-color:   #3079DF;        
+    float: left;
+    display: inline;
+    width: 10%;
+    text-align: center;
+    height: fit-content;
+}
+
+.nav-link:hover{
+    cursor: pointer;    
+    color: #A7AE19;
+}
+
+

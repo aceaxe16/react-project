@@ -2,20 +2,20 @@
     color:  #A7AE19;
 }
 
-.container{
-    width: 10%;
-    float: left;
-}
-
 form label{
     color: black;
     font-size: larger;
 }
 
 section{
-    margin: auto;
-    width: 10%;    
+    margin: auto;       
     padding: 10px;
+}
+
+form{
+    display:list-item;
+    width: 20%;
+    padding: 20px;
 }
 
 .btn-submit{

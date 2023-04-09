@@ -4,6 +4,8 @@ import { useContext } from "react";
 import{useForm} from '../../hooks/useForm';
 import {AuthContext} from '../../contexts/AuthContext';
 
+import './Register.css';
+
 export const Register = () => {
     const LoginFormKeys = {
         Email: "email",
@@ -24,7 +26,7 @@ export const Register = () => {
             <form id="register" method="post" onSubmit={onSubmit}>
                 <div className="container">
                     <div className="brand-logo"></div>
-                    <h1>Register</h1>
+                    <h1 className="page-name">Register</h1>
 
                     <label htmlFor="email">Email:</label>
                     <input
@@ -54,7 +56,7 @@ export const Register = () => {
                         onChange={changeHandler}
                     />
 
-                    <input className="btn submit" type="submit" value="Register" />
+                    <input className="btn-submit" type="submit" value="Register" />
 
                     <p className="field">
                         <span>If you already have profile click <Link to="/login">here</Link></span>

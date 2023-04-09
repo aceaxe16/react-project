@@ -4,7 +4,7 @@ import { useForm } from "../../hooks/useForm";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 
-
+import './Login.css';
 
 
 export const Login = () => {
@@ -29,7 +29,7 @@ export const Login = () => {
         <form id="login" method="POST" onSubmit={onSubmit}>
           <div className="container">
             <div className="brand-logo"></div>
-            <h1>Login</h1>
+            <h1 className="page-name">Login</h1>
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -48,7 +48,7 @@ export const Login = () => {
               value={values[LoginFormKeys.Password]}
               onChange={changeHandler}
             />
-            <input type="submit" className="btn submit" value="Login" />                    
+            <input type="submit" className="btn-submit" value="Login" />                    
             <p className="field">
               <span>
                 If you don't have profile click <Link to="/register">here</Link>

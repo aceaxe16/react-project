@@ -1,0 +1,28 @@
+.page-name{
+    color:  #A7AE19;
+}
+
+.container{
+    width: 50%;
+    float:inline;
+}
+
+form label{
+    color: black;
+    font-size: larger;
+}
+
+section{
+    margin: auto;
+    width: 100%;    
+    padding: 10px;
+}
+
+.btn-submit{
+    padding: 10px;
+    width: 120px;
+    border: 3px;
+    background-color: #A7AE19;
+    color: white;
+    border-radius: 20px;
+}

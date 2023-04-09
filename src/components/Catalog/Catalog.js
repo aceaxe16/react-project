@@ -4,7 +4,7 @@ import { CatalogItem } from "./CatalogItem";
 import './Catalog.css';
 
 export const Catalog = () => {
-  const {mangas} = useMangaContext();
+  const {mangas} = useMangaContext();  
   
   
   return (

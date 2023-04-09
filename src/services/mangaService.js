@@ -13,9 +13,13 @@ export const mangaServiceFactory = (token) => {
 
     const getAll = async () => {
         const result = await request.get(baseUrl);
-        const mangas = Object.values(result);
+        const mangas = Object.values(result);        
+        if(mangas[0] === 404){            
+            return []
+        }else{
+            return mangas;
+        }
 
-        return mangas;
     }
 
     const getOne = async (gameId) => {

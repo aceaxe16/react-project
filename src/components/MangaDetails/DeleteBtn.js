@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useService } from "../../hooks/useService";
 import { mangaServiceFactory } from "../../services/mangaService";
+
 import { useMangaContext } from "../../contexts/MangaContext";
 
 import './Details.css';

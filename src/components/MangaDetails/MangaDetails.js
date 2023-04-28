@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
 import { useAuthContext } from "../../contexts/AuthContext";
+
 import { useService } from "../../hooks/useService";
 import { mangaServiceFactory } from "../../services/mangaService";
 
-import Button from "react-bootstrap/Button";
+
 import { DeleteBtn } from "./DeleteBtn";
 
 import './Details.css';
